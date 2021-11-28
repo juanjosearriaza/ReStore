@@ -1,7 +1,12 @@
 import { ThemeProvider } from "@emotion/react";
 import { Container, createTheme, CssBaseline } from "@mui/material";
 import { useState } from "react";
+import { Route, Routes } from "react-router";
+import AboutPage from "../../features/about/AboutPage";
 import Catalog from "../../features/catalog/Catalog";
+import ProductDetails from "../../features/catalog/ProductDetails";
+import ContactPage from "../../features/contact/ContactPage";
+import HomePage from "../../features/home/HomePage";
 import Header from "./Header";
 
 function App() {
@@ -25,7 +30,13 @@ function App() {
       <CssBaseline />
       <Header onChange={onChange} darkMode={darkMode}/>
       <Container>
-        <Catalog  />
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/about" element={<AboutPage />} />
+        <Route path="/catalog" element={<Catalog />} />
+        <Route path="/catalog/:id" element={<ProductDetails />} />
+        <Route path="/contact" element={<ContactPage />} />
+      </Routes>
       </Container>
     </ThemeProvider>
   );
